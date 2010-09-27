@@ -1,0 +1,1 @@
+/home/jary_p/.bashrc
