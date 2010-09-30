@@ -13,6 +13,4 @@ alias   l='ls -CF'
 alias  vi='vim'
 alias   v='vim'
 
-alias vps='ssh root@64.120.134.216 -p 37266'
-
 export PATH=$PATH:/home/jary_p/local/bin
