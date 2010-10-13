@@ -14,6 +14,4 @@ alias  du='du -h --max-depth=1'
 alias  vi='vim'
 alias   v='vim'
 
-alias vps='ssh root@64.120.134.216 -p 37266'
-
 export PATH=$PATH:/home/jary_p/local/bin
