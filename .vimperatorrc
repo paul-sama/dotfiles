@@ -37,6 +37,9 @@ noremap  <C-d> <C-v><C-d>
 inoremap <C-d> <C-v><C-d>
 cnoremap <C-d> <C-v><C-d>
 
+noremap  <C-o> <C-v><C-o>
+
+
 
 
 " PassThrough gmail and greader
