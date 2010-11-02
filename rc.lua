@@ -54,8 +54,8 @@ end
 myawesomemenu = {
    { "manual", terminal .. " -e man awesome" },
    { "edit config", editor_cmd .. " " .. awful.util.getdir("config") .. "/rc.lua" },
-   { "restart", awesome.restart },
-   { "quit", awesome.quit }
+--   { "restart", awesome.restart },
+--   { "quit", awesome.quit }
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
@@ -312,11 +312,13 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "vlc" },
       properties = { floating = true } },
+    { rule = { class = "firefox" },
+      properties = { floating = true } },
 
     { rule = { instance = "chromium" },
       properties = { tag = tags[1][1] } },
     { rule = { instance = "chromeplus" },
-      properties = { tag = tags[1][3] } },
+      properties = { tag = tags[1][1] } },
     { rule = { instance = "transmission" },
       properties = { tag = tags[1][4] } },
     -- Set Firefox to always map on tags number 2 of screen 1.

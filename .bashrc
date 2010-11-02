@@ -14,12 +14,8 @@ alias  ppp='ping baidu.com'
 
 alias   vi='vim'
 alias    v='vim'
-alias    p='python'
 
-export PATH=$PATH:/home/jary_p/local/bin
-export PATH=$PATH:/home/jary_p/local/ChromePlus
 
-###########################################################################
 ex () {
   if [ -f $1 ] ; then
     case $1 in
@@ -42,7 +38,6 @@ ex () {
 }
 
 
-###########################################################################
 fy () {
     w3m -no-cookie -dump 'http://dict.baidu.com/s?wd='$1'&f=3'  \
     | sed '/以下结果来自互联网网络释义/,$d'| sed '1,15d' | tac \
