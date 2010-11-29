@@ -1,0 +1,10 @@
+# Make the xterm scroller work in screen, also works
+# with mouse scrollwheel(does not work...)
+
+terminfo xterm*|rxvt ti@:te@
+
+
+#define a large scrollback buffer
+defscrollback 1000
+
+vbell off  #关闭闪屏

@@ -1,4 +1,8 @@
-"2.3.1 (created: 2010/10/19 18:56:53)
+map A <Nop>
+
+noremap > g$
+noremap < g^
+noremap , <C-6>
 
 "tab numbers
 set guioptions=rbN
@@ -18,11 +22,9 @@ map <S-l> :forward<CR>
 "windows copy, past, all slect,undo
 noremap  <C-c> <C-v><C-c>
 inoremap <C-c> <C-v><C-c>
-cnoremap <C-c> <C-v><C-c>
 
-noremap  <C-v> <C-v><C-v>
+"noremap  <C-v> <C-v><C-v>
 inoremap <C-v> <C-v><C-v>
-"coremap  <C-v> <C-v><C-v>
 
 noremap  <C-a> <C-v><C-a>
 inoremap <C-a> <C-v><C-a>
@@ -40,10 +42,13 @@ cnoremap <C-d> <C-v><C-d>
 noremap  <C-o> <C-v><C-o>
 
 
+set "editor=vim -f"
+set nextpattern=\s*下一页|下一张|下一篇|下页|后页\s*,^\\bnext\\b,\\bnext\\b,^>$,^(>>|»)$,^(>|»),(>|»)$,\\bmore\\b
+set previouspattern=\s*上一页|上一张|上一篇|上页|前页\s*,^\\bprev|previous\\b,\\bprev|previous\\b,^<$,^(<<|«)$,^(<|«),(<|«)$
+set defsearch=google
 
 
 " PassThrough gmail and greader
 autocmd LocationChange .* js modes.passAllKeys = /.*(mail\.google\.com|www\.google\.com\/reader).*/.test(buffer.URL)
 
-"set runtimepath=/home/jary_p/.vimperator
 "source! /home/jary_p/.vimperatorrc.local
