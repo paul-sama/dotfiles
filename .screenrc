@@ -1,10 +1,34 @@
-# Make the xterm scroller work in screen, also works
-# with mouse scrollwheel(does not work...)
+#关闭启动信息和响铃
+startup_message off
+vbell off
 
-terminfo xterm*|rxvt ti@:te@
+#utf8
+defutf8 on
 
+#状态栏
+caption always "%{=b b}%-w%{=rb db}%n %t%{-}%+w"
+#caption always "%{=b}%{b}%{C}[stream]%{-}  %+010=%-w%8L>%{uB .my}*%n %t%{-}%+w%-014<  %-012=%{b m}%m-%d %c "
 
-#define a large scrollback buffer
+#动态窗口
+hardstatus string "screen: %t"
+
+#256色支持
+term xterm-256color
+defbce "on"
+
+# 定义回滚行数
 defscrollback 1000
 
-vbell off  #关闭闪屏
+terminfo xterm* ti@:te@
+
+#键绑定
+bindkey -k k7 screen     # bind F7 to create a new screen
+bindkey -k k8 kill       # bind F8 to kill current screen window
+bindkey -k k9 detach     # bind F9 to detach screen session
+bindkey -k k1 prev       # bind F1 to "move to previous window"
+bindkey -k k2 next       # bind F2 to "move to next window"
+
+#启动Screen后自动打开的窗口
+screen -t ssh   zsh -i -c "sshh;zsh"
+screen -t irssi zsh -i -c "irssi;zsh"
+screen -t zsh   zsh
