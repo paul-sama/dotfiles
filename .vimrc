@@ -64,21 +64,35 @@ nmap    <C-t>   :tabnew<CR>
 nmap    <C-j>   :tabprevious<CR>
 nmap    <C-k>   :tabnext<CR>
 
+"折叠的键映射
+noremap <M-z> zc
+noremap <M-x> zO
+inoremap <M-z> <C-o>zc
+inoremap <M-x> <C-o>zO
+
+
+"定义W命令，允许以root权限保存文件
+command W w !sudo tee % > /dev/null
+
+"在当前文件路径打开终端
+noremap <F3> :!xterm -e bash -c "cd %:p:h;bash" &<CR> | :redraw!
+inoremap <F3> <C-o>:!xterm -e bash -c "cd %:p:h;bash" &<CR> | :redraw!
+
 "打开文件时，总是跳到退出之前的光标处
 autocmd BufReadPost *
     \ if line("'\"") > 0 && line("'\"") <= line("$") |
     \   exe "normal! g`\"" |
     \ endif
 
-map     <F4>    :NERDTree<CR>
 
+map     <F4>    :NERDTree<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"map  :call CompileRunGcc()
-"func! CompileRunGcc()
-"    exec "w"
-"    exec "!gcc % -o %<"
-"    exec "! ./%<"
-"endfunc
+map <F5> :call CompileRunGcc()<CR>
+func! CompileRunGcc()
+    exec "w"
+    exec "!gcc % -o %<"
+    exec "! ./%<"
+endfunc
 
 map  <F6> :call CRPython()<CR>
 imap <F6> <ESC> :call CRPython()<CR>
@@ -88,14 +102,14 @@ func! CRPython()
 	exec "!python %"
 endfunc
 
-map  <F5> :call CRJava()<CR>
-imap <F5> <ESC> :call CRJava ()<CR>
-vmap <F5> <ESC> :call CRJava()<CR>
-func! CRJava()
-	exec "w"
-	exec "!javac %"
-	exec "!java %<"
-endfunc
+"map  <F5> :call CRJava()<CR>
+"imap <F5> <ESC> :call CRJava ()<CR>
+"vmap <F5> <ESC> :call CRJava()<CR>
+"func! CRJava()
+"	exec "w"
+"	exec "!javac %"
+"	exec "!java %<"
+"endfunc
 
 
 "Vimwiki setting
