@@ -1,0 +1,15 @@
+music_directory		    "/home/music/Musics"
+playlist_directory      "/home/jary_p/.mpd/playlists"
+db_file                 "/home/jary_p/.mpd/mpd.db"
+log_file                "/home/jary_p/.mpd/mpd.log"
+error_file              "/home/jary_p/.mpd/errors.log"
+pid_file                "/home/jary_p/.mpd/mpd.pid"
+state_file              "/home/jary_p/.mpd/mpdstate"
+
+user                "jary_p"
+bind_to_address     "127.0.0.1"
+port                "6600"
+
+input {
+        plugin "curl"
+}
