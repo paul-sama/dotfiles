@@ -1,3 +1,10 @@
+# sudo pacman -S bash-completion
+#if [ "$PS1" ]; then
+#  if [ -r /etc/bash_completion ]; then
+#    . /etc/bash_completion
+#  fi
+#fi
+
 #PS1='[\e[0;33m\]\t \[\e[0;31m\]\u \[\e[1;34m\]\W \[\e[0;0m]\$'
 PS1='[\e[0;33m\]\t \[\e[1;34m\]\W \[\e[0;0m]\$'
 
@@ -37,10 +44,10 @@ alias egrep='egrep --color=auto'
 #    . ~/.bash_aliases
 #fi
 
-export PATH=$PATH:/home/jary_p/local/bin
 export PATH=$PATH:/home/jary_p/local/ChromePlus
 
 export JAVA_HOME=/opt/jdk1.6.0_20
+export TOMCAT_HOME=/opt/tomcat
 export JAVA_JRE=$JAVA_HOME/jre
 export CLASS_PATH=.:$JAVA_HOME/lib:$JAVA_JRE/lib
 export PATH=$JAVA_HOME/bin:$JAVA_JRE/bin:$PATH

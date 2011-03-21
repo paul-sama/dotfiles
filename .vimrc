@@ -130,3 +130,26 @@ let g:vimwiki_list = [{'path': '~/vimwiki/',
 		\ 'html_header': '~/wiki/html/header.tpl',
 		\ 'html_footer': '~/wiki/html/footer.tpl'}
 		\ ]
+
+"autocmd BufNewFile *.py source ~/.vim/ftplugin/pythonheader.vim
+"autocmd BufNewFile *.py 0put=\"#!/usr/bin/env python\<nl># -*- coding: UTF-8 -*-\<nl>\"
+
+"autocmd BufNewFile *.py
+"            \0put=\"#!/usr/bin/python\<nl># -*- coding: UTF-8 -*-\<nl>\"
+
+
+
+
+" 能够漂亮地显示.NFO文件
+" set encoding=utf-8
+" function! SetFileEncodings(encodings)
+"     let b:myfileencodingsbak=&fileencodings
+"     let &fileencodings=a:encodings
+"endfunction
+"function! RestoreFileEncodings()
+"     let &fileencodings=b:myfileencodingsbak
+"     unlet b:myfileencodingsbak
+"endfunction
+"
+"au BufReadPre *.nfo call SetFileEncodings('cp437')|set ambiwidth=single
+"au BufReadPost *.nfo call RestoreFileEncodings()

@@ -1,0 +1,35 @@
+scgi_port = localhost:5000
+
+#下载目录
+directory = ~/CHD/rt
+
+#下载历史目录（此目录中包括下载进度信息和DHT节点缓存）
+session = ~/CHD/rt/se
+
+#（配置自动监视,把bt种子扔进～/universe目录就自动下载）
+schedule = watch_directory,5,5,load_start=~/rt/*.torrent
+
+#（配置自动监视,把bt种子从～/universe目录拿走就自动停止下载） 
+schedule = untied_directory,5,5,stop_untied=
+
+#硬盘空间低于100M就自动停止一切下载）
+schedule = low_diskspace,5,60,close_low_diskspace=100M
+
+#（在总上传量达到200M的情况下上传/下载率达到200%,或者在总上传量不足200M情况下上传/下载率达到2000%,则停止上传）
+# schedule = ratio,60,60,"stop_on_ratio=200,200M,2000"
+
+#bt监听端口
+port_range = 9400-9500
+#随机从上面范围内选择端口
+port_random = yes
+######开启DHT######
+dht = on
+#DHT所用的UDP端口
+dht_port = 9501   
+#种子交换功能
+peer_exchange = yes
+
+#（上传缓存,每个种子10M,小内存用户请酌情修改）
+send_buffer_size = 10M 
+#（下载缓存,每个种子20M,小内存用户请酌情修改）
+receive_buffer_size = 20M 

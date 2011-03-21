@@ -1,0 +1,3 @@
+" Vim plugin to add python header information to a new .py
+call setline(1, '#!/usr/bin/python2')
+call setline(2, '# -*- coding: UTF-8 -*-')
