@@ -16,24 +16,27 @@ export SUDO_PROMPT=$'[\e[31;5msudo\e[m] password for \e[33;1m%p\e[m: '
 export EDITOR=vim
 export VISUAL=vim
 
+alias     df='df -Th'
+alias    cal='cal -3m'
 alias   grep='grep -I --color=auto'
 alias  egrep='egrep -I --color=auto'
-alias    cal='cal -3m'
-alias     df='df -Th'
-alias     ls='ls --color=auto'
-alias pacman='pacman-color'
-#alias ls=$'ls -h --color=auto -X --time-style="+\e[33m[\e[32m%Y-%m-%d \e[35m%k:%M\e[33m]\e[m"'
+#alias pacman='pacman-color'
 
+alias    ls=$'ls -h --color=auto -X --time-style="+\e[33m[\e[32m%Y-%m-%d \e[35m%k:%M\e[33m]\e[m"'
 alias     l='ls -CF'
 alias    ll='ls -lh'
 alias    la='ls -A'
 alias   lla='ls -Alh'
 alias    du='du -s *(/) -h'
 
+alias   t.l='tar tf'
+
 alias    p6='ping6 ipv6.google.com'
 alias    pp='ping douban.com'
 alias   ppp='ping baidu.com'
 alias  pppp='ping 192.168.0.1'
+
+alias pushwiki='rsync -zrq  --delete /home/jary_p/wiki/html/ imhost:wiki/'
 
 alias     v='vim'
 alias    vi='vim'
@@ -41,7 +44,7 @@ alias     e='emacsclient -t -a ""'
 alias    em='emacsclient -t -a ""'
 alias     p='python2'
 
-alias  sshh='ssh -v -CNgD 7070 Aoy'
+alias  sshh='ssh -v -CNgD 7070 orange'
 
 ##路径别名  进入相应的路径时只要 cd ~xxx
 #hash -d WWW="/home/lighttpd/html"
@@ -195,9 +198,10 @@ zle -N backward-delete-char check-cmd-backward-delete-char
 # 补全类型控制
 # ex [tab] 的候选菜单中只出现扩展名为设定的文件
 compctl -g '*.tar.bz2 *.tar.gz *.bz2 *.gz *.xz *.rar *.tar *.tbz2 *.tgz *.zip *.7z *.Z' + -g '*(-/)' ex
+
 ex () {
     if [[ -z "$1" ]] ; then
-           print -P "usage: \e[1;36mextract\e[1;0m < filename >"
+           print -P "usage: \e[1;36mex\e[1;0m < filename >"
            print -P "       Extract the file specified based on the extension"
     elif [[ -f $1 ]] ; then
        case $1 in

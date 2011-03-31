@@ -1,0 +1,45 @@
+"1.0b6 (created: 2011/03/09 09:25:18)
+
+"tab numbers
+set guioptions=rbN
+
+" Mappings
+noremap j 5j
+noremap k 5k
+
+"Change tab
+noremap <S-j> <C-p>
+noremap <S-K> <C-n>
+noremap > g$
+noremap < g^
+noremap , <C-6>
+
+"back and forward
+map <S-h> :back<CR>
+map <S-l> :forward<CR>
+
+"windows copy, past, all slect
+noremap  <C-c> <C-v><C-c>
+
+inoremap <C-v> <C-v><C-v>
+
+noremap  <C-a> <C-v><C-a>
+inoremap <C-a> <C-v><C-a>
+
+"xMarks
+noremap  <C-d> <C-v><C-d>
+inoremap <C-d> <C-v><C-d>
+cnoremap <C-d> <C-v><C-d>
+
+"local files
+noremap  <C-o> <C-v><C-o>
+
+"noremap zz :stop<CR>
+
+
+
+""""""""""""""""""""""""""""""""""""""""
+loadplugins '\.(js|penta)$'
+group user
+
+" vim: set ft=pentadactyl:
