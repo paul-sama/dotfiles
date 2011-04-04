@@ -65,8 +65,8 @@ alias  sshh='ssh -v -CNgD 7070 orange'
 #文件关联
 alias -s pdf=foxitreader        #pdf文件用foxitreader打开,下同
 alias -s txt=vim
-alias -s { jpg,png }=gqview
-alias -s { avi,mp4,rmvb,wmv,m4v,mov,mkv }=mplayer
+for i in jpg png;    alias -s $i=gqview
+for i in avi mp4 rmvb wmv m4v mov mkv;      alias -s $i=mplayer
 
 # 设置参数
 setopt auto_cd # if not a command, try to cd to it.
