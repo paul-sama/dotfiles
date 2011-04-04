@@ -8,8 +8,10 @@ compinit
 bindkey -e    #Emacs风格键绑定 Ctrl+a Ctrl+e
 bindkey "\e[3~" delete-char     #设置 [DEL]键 为向后删除
 
-export HISTSIZE=1000  # number of lines kept in history
-export SAVEHIST=1000  # number of lines saved in the history after logout
+export HISTSIZE=10000000  # number of lines kept in history
+export SAVEHIST=10000000  # number of lines saved in the history after logout
+setopt share_history # share history among sessions
+setopt extended_history
 export HISTFILE=~/.zsh_history  # location of history
 export SUDO_PROMPT=$'[\e[31;5msudo\e[m] password for \e[33;1m%p\e[m: '
 
@@ -18,9 +20,10 @@ export VISUAL=vim
 
 alias     df='df -Th'
 alias    cal='cal -3m'
+alias    top='htop'
+alias   free='free -m'
 alias   grep='grep -I --color=auto'
 alias  egrep='egrep -I --color=auto'
-#alias pacman='pacman-color'
 
 alias    ls=$'ls -h --color=auto -X --time-style="+\e[33m[\e[32m%Y-%m-%d \e[35m%k:%M\e[33m]\e[m"'
 alias     l='ls -CF'
@@ -30,13 +33,16 @@ alias   lla='ls -Alh'
 alias    du='du -s *(/) -h'
 
 alias   t.l='tar tf'
+alias pacman='sudo pacman-color'
+alias pacup='pacman -Syu'
+alias yaourtup='yaourt -Syua'
 
 alias    p6='ping6 ipv6.google.com'
 alias    pp='ping douban.com'
 alias   ppp='ping baidu.com'
 alias  pppp='ping 192.168.0.1'
 
-alias pushwiki='rsync -zrq  --delete /home/jary_p/wiki/html/ imhost:wiki/'
+alias pushwiki='rsync -zrv  --delete /home/jary_p/wiki/html/ imhost:wiki/'
 
 alias     v='vim'
 alias    vi='vim'
@@ -59,11 +65,10 @@ alias  sshh='ssh -v -CNgD 7070 orange'
 #文件关联
 alias -s pdf=foxitreader        #pdf文件用foxitreader打开,下同
 alias -s txt=vim
-for i in jpg png;          alias -s $i=feh
-for i in avi rmvb wmv mkv; alias -s $i=mplayer
+alias -s { jpg,png }=gqview
+alias -s { avi,mp4,rmvb,wmv,m4v,mov,mkv }=mplayer
 
 # 设置参数
-#setopt complete_aliases #do not expand aliases _before_ completion has finished
 setopt auto_cd # if not a command, try to cd to it.
 setopt auto_pushd # automatically pushd directories on dirstack  #启用cd 命令的历史纪录,cd -[TAB]进入历史路径
 setopt auto_continue #automatically send SIGCON to disowned jobs
@@ -71,16 +76,13 @@ setopt extended_glob # so that patterns like ^() *~() ()# can be used
 setopt pushd_ignore_dups # do not push dups on stack
 setopt pushd_silent # be quiet about pushds and popds
 setopt brace_ccl # expand alphabetic brace expressions
-#setopt chase_links # ~/ln -> /; cd ln; pwd -> /
 setopt complete_in_word # stays where it is and completion is done from both ends
 setopt correct # spell check for commands only
-#setopt equals extended_glob # use extra globbing operators
 setopt no_hist_beep # don not beep on history expansion errors
 setopt hash_list_all # search all paths before command completion
 setopt hist_ignore_all_dups # when runing a command several times, only store one
 setopt hist_reduce_blanks # reduce whitespace in history
 setopt hist_ignore_space # do not remember commands starting with space
-setopt share_history # share history among sessions
 setopt hist_verify # reload full command when runing from history
 setopt hist_expire_dups_first #remove dups when max size reached
 setopt interactive_comments # comments in history
@@ -90,6 +92,11 @@ setopt numeric_glob_sort # when globbing numbered files, use real counting
 setopt inc_append_history # append to history once executed
 setopt prompt_subst # prompt more dynamic, allow function in prompt
 setopt nonomatch 
+
+#路径补全
+zstyle ':completion:*' expand 'yes'
+zstyle ':completion:*' squeeze-shlashes 'yes'
+zstyle ':completion::complete:*' '\\'
 
 #自动补全功能
 setopt AUTO_LIST
@@ -134,7 +141,11 @@ zle -N sudo-command-line
 bindkey "\e\e" sudo-command-line
 #}}}
 
-#MOST like colored Man Pages
+#[Esc][h] man 当前命令时，显示简短说明
+alias run-help >&/dev/null && unalias run-help
+autoload run-help
+
+#Colored Man Pages
 export PAGER=less
 export LESS_TERMCAP_md=$'\E[1;31m' #bold1
 export LESS_TERMCAP_mb=$'\E[1;31m'
@@ -205,17 +216,16 @@ ex () {
            print -P "       Extract the file specified based on the extension"
     elif [[ -f $1 ]] ; then
        case $1 in
-         *.tar.bz2)   tar xjfv $1    ;;
-         *.tar.gz)    tar xzfv $1    ;;
-         *.bz2)       bunzip2v $1    ;;
-         *.rar)       rar x $1       ;;
-         *.gz)        gunzip $1      ;;
-         *.tar)       tar xf $1      ;;
-         *.tbz2)      tar xjf $1     ;;
-         *.tgz)       tar xzf $1     ;;
-         *.zip)       unzip $1       ;;
-         *.Z)         uncompress $1  ;;
-         *.7z)        7z x $1        ;;
+         *.tbz2 | *.tar.bz2)  tar xjfv   $1    ;;
+         *.tgz  | *.tar.gz)   tar xzfv   $1    ;;
+         *.tar  | *.cbt)      tar xf     $1    ;;
+         *.zip  | *.cbz)      unzip      $1    ;;
+         *.bz2)               bunzip2 v  $1    ;;
+         *.xz)                unxz       $1    ;;
+         *.rar)               rar x      $1    ;;
+         *.gz)                gunzip     $1    ;;
+         *.7z)                7z x       $1    ;;
+         *.Z)                 uncompress $1    ;;
          *)           echo "'$1' cannot be extracted via extract()" ;;
        esac
    else
