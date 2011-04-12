@@ -1,6 +1,13 @@
+hardstatus off
+hardstatus string "screen(@%H): %t"
+termcapinfo xterm* 'hs:ts=\E]0;:fs=\007:ds=\E]0;\007'
+
 #关闭启动信息和响铃
 startup_message off
 vbell off
+
+#use zshell as default shell
+shell zsh
 
 #utf8
 defutf8 on
@@ -17,16 +24,17 @@ term xterm-256color
 defbce "on"
 
 # 定义回滚行数
-defscrollback 1000
+defscrollback 10000
 
-terminfo xterm* ti@:te@
+terminfo xterm*|rxvt ti@:te@
 
 #键绑定
 bindkey -k k7 screen     # bind F7 to create a new screen
 bindkey -k k8 kill       # bind F8 to kill current screen window
 bindkey -k k9 detach     # bind F9 to detach screen session
-bindkey -k k1 prev       # bind F1 to "move to previous window"
-bindkey -k k2 next       # bind F2 to "move to next window"
+
+bindkey -k k2 prev       # bind F1 to "move to previous window"
+bindkey -k k3 next       # bind F2 to "move to next window"
 
 #启动Screen后自动打开的窗口
 screen -t ssh   zsh -i -c "sshh;zsh"
