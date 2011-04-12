@@ -44,6 +44,7 @@ alias  pppp='ping 192.168.0.1'
 
 alias pushwiki='rsync -zrv  --delete /home/jary_p/wiki/html/ imhost:wiki/'
 
+alias    ra='ranger'
 alias     v='vim'
 alias    vi='vim'
 alias     e='emacsclient -t -a ""'
