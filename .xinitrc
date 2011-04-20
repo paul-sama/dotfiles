@@ -12,6 +12,7 @@ export XMODIFIERS="@im=fcitx"
 fcitx &
 
 wakoopa &
-transmission &
+#transmission-gtk &
 
 exec awesome
+#exec ck-launch-session awesome
