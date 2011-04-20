@@ -5,8 +5,10 @@
 #  fi
 #fi
 
+PS1="\n\[\e[30;1m\]\[\016\]\[\017\](\[\e[34;1m\]\u@\h\[\e[30;1m\])-(\[\e[34;1m\]\j\[\e[30;1m\])-(\[\e[34;1m\]$(date +%F\ %H:%M)\[\e[30;1m\])\[\e[30;1m\]\n\[\016\](\[\e[32;1m\]\w\[\e[30;1m\])--> \[\e[0m\]"
+
 #PS1='[\e[0;33m\]\t \[\e[0;31m\]\u \[\e[1;34m\]\W \[\e[0;0m]\$'
-PS1='[\e[0;33m\]\t \[\e[1;34m\]\W \[\e[0;0m]\$'
+#PS1='[\e[0;33m\]\t \[\e[1;34m\]\W \[\e[0;0m]\$'
 
 export EDITOR=/usr/bin/vim
 
@@ -15,8 +17,8 @@ export EDITOR=/usr/bin/vim
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/aliases ]; then
-    . ~/aliases
+if [ -f ~/.aliases ]; then
+    . ~/.aliases
 fi
 
 ex () {
