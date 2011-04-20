@@ -10,7 +10,7 @@ bindkey "\e[3~" delete-char     #设置 [DEL]键 为向后删除
 
 export HISTSIZE=10000000  # number of lines kept in history
 export SAVEHIST=10000000  # number of lines saved in the history after logout
-setopt share_history # share history among sessions
+setopt share_history      # share history among sessions
 setopt extended_history
 export HISTFILE=~/.zsh_history  # location of history
 export SUDO_PROMPT=$'[\e[31;5msudo\e[m] password for \e[33;1m%p\e[m: '
@@ -18,40 +18,10 @@ export SUDO_PROMPT=$'[\e[31;5msudo\e[m] password for \e[33;1m%p\e[m: '
 export EDITOR=vim
 export VISUAL=vim
 
-alias     df='df -Th'
-alias    cal='cal -3m'
-alias    top='htop'
-alias   free='free -m'
-alias   grep='grep -I --color=auto'
-alias  egrep='egrep -I --color=auto'
-
-alias    ls=$'ls -h --color=auto -X --time-style="+\e[33m[\e[32m%Y-%m-%d \e[35m%k:%M\e[33m]\e[m"'
-alias     l='ls -CF'
-alias    ll='ls -lh'
-alias    la='ls -A'
-alias   lla='ls -Alh'
-alias    du='du -s *(/) -h'
-
-alias   t.l='tar tf'
-alias pacman='sudo pacman-color'
-alias pacup='pacman -Syu'
-alias yaourtup='yaourt -Syua'
-
-alias    p6='ping6 ipv6.google.com'
-alias    pp='ping douban.com'
-alias   ppp='ping baidu.com'
-alias  pppp='ping 192.168.0.1'
-
-alias pushwiki='rsync -zrv  --delete /home/jary_p/wiki/html/ imhost:wiki/'
-
-alias    ra='ranger'
-alias     v='vim'
-alias    vi='vim'
-alias     e='emacsclient -t -a ""'
-alias    em='emacsclient -t -a ""'
-alias     p='python2'
-
-alias  sshh='ssh -v -CNgD 7070 orange'
+#Put all alias definitions into a separate file
+if [ -f ~/.aliases ]; then
+    . ~/.aliases
+fi
 
 ##路径别名  进入相应的路径时只要 cd ~xxx
 #hash -d WWW="/home/lighttpd/html"
