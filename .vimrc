@@ -20,9 +20,9 @@ set scrolloff=3     "光标移到buffer的顶部和底部保存3行距离
 set incsearch       "Search as you type
 set ignorecase      "Ignore case when searching
 set hlsearch        "Hightlight search things
-set smartindent	    "smart auto indenting
-set smarttab	    "smart tab handling for indenting
-set magic	    "change the way backslashes are used in search patterns
+"set smartindent	    "smart auto indenting
+"set smarttab	    "smart tab handling for indenting
+"set magic	    "change the way backslashes are used in search patterns
 set autoread        "Set to auto read when a file is changed from the outside
 set nobackup        "Turn backup off,no backup ~ files.
 set foldenable

@@ -4,7 +4,7 @@
 #
 # Executed by startx (run your window manager from here)
 
-xrdb ~/.Xresources
+xrdb -merge ~/.Xresources
 
 export GTK_IM_MODULE=xim
 export QT_IM_MODULE=xim
