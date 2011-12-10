@@ -4,15 +4,17 @@
 #
 # Executed by startx (run your window manager from here)
 
-xrdb -merge ~/.Xresources
+xrdb ~/.Xresources
 
 export GTK_IM_MODULE=xim
 export QT_IM_MODULE=xim
 export XMODIFIERS="@im=fcitx"
-fcitx &
+export SDL_AUDIODRIVER="alsa"
 
+fcitx &
 wakoopa &
-#transmission-gtk &
+wicd-client &
+transmission-gtk &
 
 exec awesome
 #exec ck-launch-session awesome

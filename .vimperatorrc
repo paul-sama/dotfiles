@@ -1,54 +1,81 @@
-map A <Nop>
+loadplugins
 
 noremap > g$
 noremap < g^
 noremap , <C-6>
 
-"tab numbers
-set guioptions=rbN
+nnoremap bm :buffer! Gmail<CR>
+nnoremap br :buffer! reader<CR>
+nnoremap bh :buffer! HootSuite<CR>
 
-" Mappings
-noremap j 5j
-noremap k 5k
+nnoremap <C-Up> :set mainecoon=cmu<CR>
+nnoremap <C-Down> :set mainecoon=acmu<CR>
 
-"Change tab
+nnoremap j 5<C-e>
+nnoremap k 5<C-y>
+
 noremap <S-j> <C-p>
 noremap <S-K> <C-n>
-
-"back and forward
 map <S-h> :back<CR>
 map <S-l> :forward<CR>
 
+map w <C-tab>
+map q <C-S-tab>
+noremap W :tabmove! +1<CR>
+noremap Q :tabmove! -1<CR>
+
 "windows copy, past, all slect,undo
-noremap  <C-c> <C-v><C-c>
-inoremap <C-c> <C-v><C-c>
+noremap  <C-c> <Insert><C-c>
+inoremap <C-c> <Insert><C-c>
 
-"noremap  <C-v> <C-v><C-v>
-inoremap <C-v> <C-v><C-v>
+noremap  <C-v> <Insert><C-v>
+inoremap <C-v> <Insert><C-v>
 
-noremap  <C-a> <C-v><C-a>
-inoremap <C-a> <C-v><C-a>
-cnoremap <C-a> <C-v><C-a>
+noremap  <C-a> <Insert><C-a>
+inoremap <C-a> <Insert><C-a>
+cnoremap <C-a> <Insert><C-a>
 
+noremap  <C-b> <Insert><C-b>
+inoremap <C-b> <Insert><C-b>
+cnoremap <C-b> <Insert><C-b>
 
-noremap  <C-b> <C-v><C-b>
-inoremap <C-b> <C-v><C-b>
-cnoremap <C-b> <C-v><C-b>
+noremap  <C-d> <Insert><C-d>
+inoremap <C-d> <Insert><C-d>
+cnoremap <C-d> <Insert><C-d>
 
-noremap  <C-d> <C-v><C-d>
-inoremap <C-d> <C-v><C-d>
-cnoremap <C-d> <C-v><C-d>
+noremap  <C-o> <Insert><C-o>
 
-noremap  <C-o> <C-v><C-o>
+" set {{{
+set activate=all
+set animations
+set complete=tHSl
+set editor='/usr/bin/vim -g'
+set focuscontent
+set hlsearch
+set incsearch
+set insertmode
+set newtab=all
+set popups=tab
+set showmode
+set showstatuslinks=2
+set titlestring=Vimperator
+set verbose=5
+set visualbell
+set wildmode=list:full
+set scrollbars
+set tabnumbers
+set status=tabcount,position,input,location
+set history=5000
+set defsearch=google
+set maxitems=10
+set! ui.key.generalAccessKey=0
 
+set hintchars="asdfghjkl"
+hi -a Hint text-transform: uppercase
 
-set "editor=vim -f"
 set nextpattern=\s*下一页|下一张|下一篇|下页|后页\s*,^\\bnext\\b,\\bnext\\b,^>$,^(>>|»)$,^(>|»),(>|»)$,\\bmore\\b
 set previouspattern=\s*上一页|上一张|上一篇|上页|前页\s*,^\\bprev|previous\\b,\\bprev|previous\\b,^<$,^(<<|«)$,^(<|«),(<|«)$
-set defsearch=google
-
+" }}}
 
 " PassThrough gmail and greader
 autocmd LocationChange .* js modes.passAllKeys = /.*(mail\.google\.com|www\.google\.com\/reader).*/.test(buffer.URL)
-
-"source! /home/jary_p/.vimperatorrc.local

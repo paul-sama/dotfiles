@@ -1,13 +1,11 @@
-"1.0b6 (created: 2011/03/09 09:25:18)
- 
 "tab numbers
 set guioptions=rbN
-
 set titlestring=Firefox
 set novb
+set newtab=all
 
 set hintkeys="asdfghjkl"
-hi -a Hint text-transform: uppercase
+hi -a Hint text-transform: uppercase;	color: red;
 
 " Mappings
 noremap j 5j
@@ -15,9 +13,10 @@ noremap k 5k
 
 noremap <leader>a :addons<cr>
 noremap <leader>d :downloads<cr>
+noremap <leader> :bmarks -tags=
 
-map <C-Up> :set guioptions+=B<cr>
-map <C-Down> :set guioptions-=B<cr>
+map <C-Up> 	 :set guioptions-=B<cr>
+map <C-Down> :set guioptions+=B<cr>
 
 "Change tab
 noremap <S-j> <C-p>
@@ -25,6 +24,15 @@ noremap <S-K> <C-n>
 noremap > g$
 noremap < g^
 noremap , <C-6>
+
+map w <C-tab>
+map q <C-S-tab>
+noremap W :tabmove! +1<CR>
+noremap Q :tabmove! -1<CR>
+
+nnoremap bm :buffer! Gmail<CR>
+nnoremap br :buffer! reader<CR>
+nnoremap bh :buffer! HootSuite<CR>
 
 "back and forward
 map <S-h> :back<CR>
@@ -45,10 +53,8 @@ map -m n,v,i,c,t <C-o> <Pass>
 set nextpattern=\s*下一页|下一张|下一篇|下页|后页\s*,^\\bnext\\b,\\bnext\\b,^>$,^(>>|»)$,^(>|»),(>|»)$,\\bmore\\b
 set previouspattern=\s*上一页|上一张|上一篇|上页|前页\s*,^\\bprev|previous\\b,\\bprev|previous\\b,^<$,^(<<|«)$,^(<|«),(<|«)$
 
-
 "-- passthrough --"
 autocmd LocationChange www.google.com/reader/,mail.google.com :normal! <C-z>
-
 
 """"""""""""""""""""""""""""""""""""""""
 loadplugins '\.(js|penta)$'

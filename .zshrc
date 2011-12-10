@@ -24,8 +24,10 @@ if [ -f ~/.aliases ]; then
 fi
 
 ##路径别名  进入相应的路径时只要 cd ~xxx
-#hash -d WWW="/home/lighttpd/html"
-#hash -d ARCH="/mnt/arch"
+hash -d windows="/home/music"
+hash -d backup="/home/backup"
+hash -d pdf="/home/music/Documents/PDF"
+#hash -d arch="/mnt/arch"
 #hash -d PKG="/var/cache/pacman/pkg"
 #hash -d E="/etc/env.d"
 #hash -d C="/etc/conf.d"
@@ -180,6 +182,7 @@ zle -N backward-delete-char check-cmd-backward-delete-char
 # 补全类型控制
 # ex [tab] 的候选菜单中只出现扩展名为设定的文件
 compctl -g '*.tar.bz2 *.tar.gz *.bz2 *.gz *.xz *.rar *.tar *.tbz2 *.tgz *.zip *.7z *.Z' + -g '*(-/)' ex
+compctl -g '*.pdf' + -g '*(-/)' zathura
 
 ex () {
     if [[ -z "$1" ]] ; then

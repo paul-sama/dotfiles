@@ -1,5 +1,3 @@
-! xterm ----------------------------------------------------------------------
-
 !look and feel
 xterm.termName: xterm-256color
 xterm.geometry: 80x36
@@ -7,6 +5,13 @@ xterm*scrollBar:      false
 xterm*rightScrollBar: true
 xterm*loginshell:     true
 xterm*cursorBlink:    true
+!xterm*background:  black
+!xterm*foreground:  gray
+!xterm.borderLess: true
+!xterm.cursorBlink: true
+!xterm*colorUL: yellow
+!xterm*colorBD: white
+
 !font and locale
 xterm*locale:    true
 xterm.utf8:      true
@@ -14,11 +19,15 @@ xterm*utf8Title: true
 xterm*fontMenu*fontdefault*Label: Default
 xterm*faceName: Monaco:antialias=True:pixelsize=18
 xterm*faceNameDoublesize: wenquanyi bitmap song:pixelsize=19:antialias=True
+!xterm*faceName: monofur:antialias=True:pixelsize=23
+!xterm*boldFont: DejaVu Sans Mono:style=Bold:pixelsize=18
+
 xterm*xftAntialias: true
 xterm*cjkWidth:false      
 xterm*eightBitInput:false
 xterm*metaSendsEscape: true
 xterm*altSendsEscape:true
+
 ! Molokai theme
 *xterm*background:  #101010
 *xterm*foreground:  #d0d0d0
@@ -39,12 +48,3 @@ xterm*altSendsEscape:true
 *xterm*color13: #bb88dd
 *xterm*color14: #4eb4fa
 *xterm*color15: #d0d0d0
-
-
-! xpdf -----------------------------------------------------------------------
-
-xpdf*enableFreetype:    yes
-xpdf*antialias:         yes
-xpdf*foreground:        black
-xpdf*background:        white
-xpdf*urlCommand:        /usr/bin/firefox %s
