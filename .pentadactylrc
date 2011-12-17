@@ -1,11 +1,12 @@
-"tab numbers
+colo molokai
 set guioptions=rbN
 set titlestring=Firefox
 set novb
 set newtab=all
+set editor='xterm -e vim'
 
 set hintkeys="asdfghjkl"
-hi -a Hint text-transform: uppercase;	color: red;
+hi -a Hint text-transform: uppercase;
 
 " Mappings
 noremap j 5j
@@ -50,14 +51,14 @@ map -m n,v,i,c,t <C-d> <Pass>
 "local files
 map -m n,v,i,c,t <C-o> <Pass>
 
-set nextpattern=\s*下一页|下一张|下一篇|下页|后页\s*,^\\bnext\\b,\\bnext\\b,^>$,^(>>|»)$,^(>|»),(>|»)$,\\bmore\\b
-set previouspattern=\s*上一页|上一张|上一篇|上页|前页\s*,^\\bprev|previous\\b,\\bprev|previous\\b,^<$,^(<<|«)$,^(<|«),(<|«)$
+set nextpattern=\s*下一页|下一张|下一篇|下页|后页\s*,^\\bnext\\b,^>$,^(>>|»)$,^(>|»),(>|»)$,\\bmore\\b
+set previouspattern=\s*上一页|上一张|上一篇|上页|前页\s*,^\\b(prev|previous\\b),^<$,^(<<|«)$,^(<|«),(<|«)$
 
 "-- passthrough --"
-autocmd LocationChange www.google.com/reader/,mail.google.com :normal! <C-z>
+set passkeys+=mail.google.com:'!#*+-./<C-s><CR>?INU[]acefjklmnoprsuvxyz',*a,*n,*r,*s,*t,ga,gc,gd,gi,gl,gs,gt
+set passkeys+=www.google.com/reader/:'!#*+-./<C-Down><C-s><Enter>?INU[]acefjkvf',ga,gh,gt
 
 """"""""""""""""""""""""""""""""""""""""
 loadplugins '\.(js|penta)$'
-group user
 
-" vim: set ft=pentadactyl:
+" vim: set ft=vimperator:
