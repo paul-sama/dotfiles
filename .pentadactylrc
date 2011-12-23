@@ -19,8 +19,8 @@ nnoremap k 5k
 noremap <leader>a :addons<cr>
 noremap <leader>d :downloads<cr>
 noremap <leader> :bmarks -tags=
-"map <leader>s :source ~/.pentadactylrc<CR>
-map <leader>s :runtime ~/.pentadactyl<CR>
+map <leader>s :source ~/.pentadactylrc<CR>
+command! fresh -description "Reload ~/.pentadactylrc file" source ~/.pentadactylrc
 
 map <C-Up> 	 :set guioptions-=B<cr>
 map <C-Down> :set guioptions+=B<cr>
@@ -63,5 +63,8 @@ set previouspattern=\s*上一页|上一张|上一篇|上页|前页\s*,^\\b(prev|
 "-- passthrough --"
 set passkeys+=mail.google.com:'!#*+-./<C-s><CR>?INU[]acefjklmnoprsuvxyz',*a,*n,*r,*s,*t,ga,gc,gd,gi,gl,gs,gt
 set passkeys+=www.google.com/reader/:'!#*+-./<C-Down><C-s><Enter>?INU[]acefjkvf',ga,gh,gt
+
+command! sitesearch -nargs=* tabopen http://www.google.com/search?q=<args>
+map <silent> S :exe ":sitesearch "+content.getSelection()+" site:"+window.content.location.hostname<CR>
 
 " vim: set ft=vimperator:
