@@ -1,49 +1,85 @@
-# A basic .muttrc for use with Gmail
-
-# 按照自己账户的实际情况修改如下部分
-
-set imap_user = "foobar@gmail.com"
-set imap_pass = "passwd"
-set smtp_url = "smtp://anyeccc@smtp.gmail.com:587/"
-set smtp_pass = "passwd"
-set from = "foobar@gmail.com"
-set realname = "Tom"
-
-# 选择你喜欢的文本编辑器，nano，emacs 之类都可以
-set editor = "vim"
-
-# Basic config, you can leave this as is
-set folder = "imaps://imap.gmail.com:993"
-set spoolfile = "+INBOX"
-set imap_check_subscribed
-set hostname = gmail.com
-set mail_check = 120
-set timeout = 300
-set imap_keepalive = 300
-set postponed = "+[GMail]/Drafts"
-set record = "+[GMail]/Sent Mail"
-set header_cache=~/.mutt/cache/headers
-set message_cachedir=~/.mutt/cache/bodies
-set certificate_file=~/.mutt/certificates
+set charset = "utf-8"
+set send_charset = "utf-8"
+set locale = "utf-8"
+set assumed_charset = "GB18030:gb2312:gbk:utf-8"
+set beep = no               #无声
 set move = no
-set include
-set sort = 'threads'
-#set sort_aux = 'reverse-last-date-received'
-set auto_tag = yes
-ignore "Authentication-Results:"
-ignore "DomainKey-Signature:"
-ignore "DKIM-Signature:"
-hdr_order Date From To Cc
-alternative_order text/plain text/html *
-auto_view text/html
-bind editor <Tab> complete-query
-bind editor ^T complete
-bind editor <space> noop
+set markers=no              #自动换行时行首不显示+
+set fast_reply = yes	    #回复邮件不用输入地址和标题
+set include = yes		    #回信包含原文
+set indent_str = "> "       #回信引文前插入的符号
+set edit_headers = no       #是否把邮件头也放在编辑器里可以修改
+set pager_stop		        #如果翻到最后也不会到下一封邮件
+set tilde = yes             #在邮件结束后每行开头显示~ 符号
+set rfc2047_parameters=yes  #解决中文附件名为乱码问题
+set resolve = yes
+set mark_old = no
+set mail_check =10
+set alias_file = ~/.mutt/alias
+set mailcap_path = ~/.mutt/mailcap
+set header_cache = ~/.mutt/cache/headers
+set message_cachedir = ~/.mutt/cache/bodies
+set sendmail = "/usr/bin/msmtp"
+set editor='vim + -c "set textwidth=72" -c "set wrap"'
+set reply_regexp = "^(re([\[0-9\]+])*|aw|回复|答复)[:：][ \t]*"  # To recognize reply messages
 
-# Gmail-style keyboard shortcuts 键盘快捷键设置，这个配置是和 gmail web 一样的
-macro index,pager y "<enter-command>unset trash\n <delete-message>" "Gmail archive message"
-macro index,pager d "<enter-command>set trash=\"imaps://imap.googlemail.com/[GMail]/Bin\"\n <delete-message>" "Gmail delete message"
-macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
-macro index,pager ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
-macro index,pager gs "<change-folder>=[Gmail]/Starred<enter>" "Go to starred messages"
-macro index,pager gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
+# Set from header field
+set use_from = yes
+set reverse_name = yes
+set realname = 'Auston Jary'
+set reverse_realname = no
+set from = 'Auston Jary <anyeccc@gmail.com>'
+my_hdr From: anyeccc@gmail.com
+
+#set pager_index_lines=4    #当你在用 pager 看信件时，在 index 留出多少行显示邮件列表
+
+set sort = reverse-threads
+set sort_aux = last-date-received 
+
+auto_view text/html application/pdf application/msword
+alternative_order text/plain text text/enriched text/html
+
+set mbox_type = Maildir
+set folder = $HOME/.mail/	        #邮件存放目录
+set spoolfile = "~/.mail/inbox"
+set postponed = "~/.mail/drafts/"
+set record = "~/.mail/sent"
+
+mailboxes =inbox
+mailboxes =sent
+mailboxes =keep
+
+save-hook .* =keep                  #默认保存的邮件箱为keep
+set check_new = yes
+
+# formats
+set date_format = "%m/%d %I:%M"
+set index_format = "%3C %Z| %D  %-15.15F [%4c]  %s"
+set alias_format = "%4n %t %-20a %r"
+
+bind index gg       first-entry
+bind index G        last-entry
+bind index <Tab>    previous-new-then-unread
+bind pager j        next-line
+bind pager k        previous-line
+bind pager gg       top
+bind pager G        bottom
+bind pager [        next-entry
+bind pager ]        previous-entry
+bind index,pager R  group-reply
+bind attach <space> view-attach
+
+macro index,pager gi "<change-folder>=inbox<enter>" "Go to inbox"
+macro index,pager gs "<change-folder>=sent<enter>" "Go to sent"
+macro index,pager \cb <pipe-entry>'urlview'<enter> "Follow links with urlview"
+macro attach s "<save-entry><kill-line>~/Downloads/<enter>a" "Save attachment"
+
+# headers to show
+ignore *                                   
+unignore from to cc date subject user-agent
+hdr_order date from to cc subject user-agent
+
+source ~/.mutt/alias
+source ~/.mutt/mutt-colors-solarized-light-256.muttrc
+
+#subscribe arch-general@archlinux.org
