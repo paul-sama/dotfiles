@@ -53,7 +53,7 @@ save-hook .* =keep                  #默认保存的邮件箱为keep
 set check_new = yes
 
 # formats
-set date_format = "%m/%d %I:%M"
+set date_format = "%m/%d %H:%M"
 set index_format = "%3C %Z| %D  %-15.15F [%4c]  %s"
 set alias_format = "%4n %t %-20a %r"
 
@@ -73,6 +73,9 @@ macro index,pager gi "<change-folder>=inbox<enter>" "Go to inbox"
 macro index,pager gs "<change-folder>=sent<enter>" "Go to sent"
 macro index,pager \cb <pipe-entry>'urlview'<enter> "Follow links with urlview"
 macro attach s "<save-entry><kill-line>~/Downloads/<enter>a" "Save attachment"
+
+macro index,pager E   "!vim ~/.muttrc<enter>" "edit ~/.muttrc"
+macro index,pager \co ":source ~/.muttrc<enter>" "source ~/.muttrc"
 
 # headers to show
 ignore *                                   
