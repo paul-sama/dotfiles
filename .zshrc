@@ -8,15 +8,16 @@ compinit
 bindkey -e    #Emacs风格键绑定 Ctrl+a Ctrl+e
 bindkey "\e[3~" delete-char     #设置 [DEL]键 为向后删除
 
+export HISTFILE=~/.zsh_history  # location of history
 export HISTSIZE=10000000  # number of lines kept in history
 export SAVEHIST=10000000  # number of lines saved in the history after logout
 setopt share_history      # share history among sessions
 setopt extended_history
-export HISTFILE=~/.zsh_history  # location of history
 export SUDO_PROMPT=$'[\e[31;5msudo\e[m] password for \e[33;1m%p\e[m: '
 
-export EDITOR=vim
-export VISUAL=vim
+export EDITOR="vim"
+export VISUAL="vim"
+export BROWSER="firefox"
 
 #Put all alias definitions into a separate file
 if [ -f ~/.aliases ]; then
