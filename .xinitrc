@@ -16,5 +16,10 @@ wakoopa &
 wicd-client &
 transmission-gtk &
 
-exec awesome
-#exec ck-launch-session awesome
+DEFAULT_SESSION=awesome
+case $1 in
+  awesome|xmonad) exec $1 ;;
+  *) exec $DEFAULT_SESSION ;;
+esac
+
+#exec awesome

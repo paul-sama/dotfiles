@@ -1,0 +1,35 @@
+alias     df='df -Th'
+alias    cal='cal -3m'
+alias    top='htop'
+alias   free='free -m'
+alias   grep='grep -I --color=auto'
+alias  egrep='egrep -I --color=auto'
+
+alias    ls=$'ls -h --color=auto -X --time-style="+\e[33m[\e[32m%Y-%m-%d \e[35m%k:%M\e[33m]\e[m"'
+alias     l='ls -CF'
+alias    ll='ls -lh'
+alias    la='ls -A'
+alias   lla='ls -Alh'
+alias    du='du -s *(/) -h'
+
+alias   t.l='tar tf'
+#alias pacman='sudo pacman-color'
+alias pacup='pacman -Syu'
+alias yaourtup='yaourt -Syua'
+
+alias    p6='ping6 ipv6.google.com'
+alias    pp='ping qq.com'
+alias   ppp='ping baidu.com'
+alias  pppp='ping 192.168.0.1'
+
+alias pushwiki='rsync -zrv  --delete /home/jary_p/wiki/html/ imhost:wiki/'
+
+alias    ra='ranger'
+alias     v='vim'
+alias    vi='vim'
+alias    tm='tmux att'
+alias     e='emacsclient -t -a ""'
+alias    em='emacsclient -t -a ""'
+alias     p='python2'
+
+alias  sshh='ssh -v -CNgD 7070 orange'
