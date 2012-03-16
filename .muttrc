@@ -1,88 +1,88 @@
 set charset = "utf-8"
 set send_charset = "utf-8"
-set locale = "utf-8"
 set assumed_charset = "GB18030:gb2312:gbk:utf-8"
+
 set beep = no               #无声
-set move = no
-set markers=no              #自动换行时行首不显示+
+set move = no               #确定当你退出时,是否提示你把信件从spool 移动到的$mbox
+set markers = no            #自动换行时行首不显示+
 set fast_reply = yes	    #回复邮件不用输入地址和标题
 set include = yes		    #回信包含原文
 set indent_str = "> "       #回信引文前插入的符号
+set header = no             #在回信时引用原文是否加入原文的邮件头
 set edit_headers = no       #是否把邮件头也放在编辑器里可以修改
 set pager_stop		        #如果翻到最后也不会到下一封邮件
+set quit = ask-yes          #退出时是否提示
 set tilde = yes             #在邮件结束后每行开头显示~ 符号
 set rfc2047_parameters=yes  #解决中文附件名为乱码问题
-set resolve = yes
-set mark_old = no
-set mail_check =10
+set resolve = yes           #当执行了一个修改当前邮件的命令后,光标会自动跳到下一封邮件
+set mark_old = no           #当没有阅读新邮件而退出一个信箱时,mutt是否将这些未读邮件标记为旧的
+set mail_check =10          #此变量配置mutt检查新邮件的频率(以秒为单位)
+set wait_key = yes          #当外部程序退出时,是否要求用户按一个键才返回(如shell命令)
+
 set alias_file = ~/.mutt/alias
 set mailcap_path = ~/.mutt/mailcap
-set header_cache = ~/.mutt/cache/headers
-set message_cachedir = ~/.mutt/cache/bodies
+set header_cache = ~/.mutt/cache/
+set message_cachedir = ~/.mutt/cache/
+
 set sendmail = "/usr/bin/msmtp"
-set editor='vim + -c "set textwidth=72" -c "set wrap"'
-set reply_regexp = "^(re([\[0-9\]+])*|aw|回复|答复)[:：][ \t]*"  # To recognize reply messages
+set editor = 'vim + -c "set textwidth=72" -c "set wrap"'
 
 # Set from header field
 set use_from = yes
 set reverse_name = yes
-set realname = 'Auston Jary'
+set realname = "Auston Jary"
 set reverse_realname = no
 set from = 'Auston Jary <anyeccc@gmail.com>'
-my_hdr From: anyeccc@gmail.com
 
-#set pager_index_lines=4    #当你在用 pager 看信件时，在 index 留出多少行显示邮件列表
-
-set sort = reverse-threads
-set sort_aux = last-date-received 
-
-auto_view text/html application/pdf application/msword
-alternative_order text/plain text text/enriched text/html
+# headers to show
+folder-hook . "ignore *; unignore From Cc Bcc Reply-To Date Subject user-agent"
+folder-hook sent.* "ignore *; unignore To Subject Date"
+hdr_order Date From To Reply-To Cc Bcc Subject user-agent
 
 set mbox_type = Maildir
 set folder = $HOME/.mail/	        #邮件存放目录
 set spoolfile = "~/.mail/inbox"
-set postponed = "~/.mail/drafts/"
+set postponed = "~/.mail/drafts"
 set record = "~/.mail/sent"
 
 mailboxes =inbox
-mailboxes =sent
-mailboxes =keep
+mailboxes =arch
+mailboxes =zhlist
 
-save-hook .* =keep                  #默认保存的邮件箱为keep
 set check_new = yes
+save-hook .* =keep                  #默认保存的邮件箱为keep
 
 # formats
 set date_format = "%m/%d %H:%M"
-set index_format = "%3C %Z| %D  %-15.15F [%4c]  %s"
+set index_format = "%4C %Z%?M?(%2M)&    ?| %D  %-15.15F [%4c]  %s"
 set alias_format = "%4n %t %-20a %r"
+
+set sort = threads
+folder-hook . "push <collapse-all>"
+
+auto_view text/html text/enriched application/pdf application/msword
+alternative_order text/plain text text/enriched text/html
 
 bind index gg       first-entry
 bind index G        last-entry
-bind index <Tab>    previous-new-then-unread
+bind index <Tab>    next-new-then-unread
+bind index v        collapse-thread
 bind pager j        next-line
 bind pager k        previous-line
 bind pager gg       top
 bind pager G        bottom
-bind pager [        next-entry
-bind pager ]        previous-entry
-bind index,pager R  group-reply
+bind pager ]        next-entry
+bind pager [        previous-entry
 bind attach <space> view-attach
 
-macro index,pager gi "<change-folder>=inbox<enter>" "Go to inbox"
-macro index,pager gs "<change-folder>=sent<enter>" "Go to sent"
-macro index,pager \cb <pipe-entry>'urlview'<enter> "Follow links with urlview"
-macro attach s "<save-entry><kill-line>~/Downloads/<enter>a" "Save attachment"
+macro index,pager gi "<change-folder>=inbox<enter>"     "Go to inbox"
+macro index,pager gs "<change-folder>=sent<enter>"      "Go to sent"
+macro index,pager ga "<change-folder>=arch<enter>"      "Go to arch"
+macro index,pager gz "<change-folder>=zhlist<enter>"    "Go to zhlish"
+macro index,pager \cb <pipe-entry>'urlview'<enter>      "Follow links with urlview"
 
 macro index,pager E   "!vim ~/.muttrc<enter>" "edit ~/.muttrc"
 macro index,pager \co ":source ~/.muttrc<enter>" "source ~/.muttrc"
 
-# headers to show
-ignore *                                   
-unignore from to cc date subject user-agent
-hdr_order date from to cc subject user-agent
-
 source ~/.mutt/alias
 source ~/.mutt/mutt-colors-solarized-light-256.muttrc
-
-#subscribe arch-general@archlinux.org

@@ -2,19 +2,18 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin
 SHELL=/bin/bash
 MAILDIR=$HOME/.mail
 LOGFILE=$MAILDIR/.procmaillog
-DEFAULT=$MAILDIR/inbox
-
-#:0
-#* ^Sender: python-cn@googlegroups.com
-#CPyUG/
-#
-#:0
-#* ^List-ID: <shlug.googlegroups.com>
-#SHLUG/
-#
-#:0
-#* ^TO_vim-cn@googlegroups.com
-#Vim/
 
 :0
-$DEFAULT/
+* ^Sender: arch-general*
+arch/
+
+:0
+* ^Sender: ubuntu-zh*
+zh-list/
+
+:0
+* ^Sender: archlinux-cn*
+zh-list/
+
+:0
+inbox/

@@ -12,14 +12,17 @@ export XMODIFIERS="@im=fcitx"
 export SDL_AUDIODRIVER="alsa"
 
 fcitx &
-wakoopa &
-wicd-client &
 transmission-gtk &
 
 DEFAULT_SESSION=awesome
 case $1 in
-  awesome|xmonad) exec $1 ;;
-  *) exec $DEFAULT_SESSION ;;
+  awesome)
+        exec awesome
+        ;;
+  openbox-session)
+        exec openbox-session
+        ;;
+  *)
+        exec $DEFAULT_SESSION
+        ;;
 esac
-
-#exec awesome

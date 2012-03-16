@@ -10,7 +10,6 @@ sudo tar -czpvf $backupall / --exclude=/home/* --exclude=/mnt/* --exclude=/media
 							 --exclude=/proc/* --exclude=/sys/* --exclude=/dev/* \
 							 --exclude=/tmp/* --exclude=/lost+found/* \
 							 --exclude=/var/cache/pacman/pkg/* \
-							 --exclude=/var/empty
 
 sudo tar -czpvf $backuphome /home/jary_p --exclude=/home/jary_p/Downloads/* \
 						 	 			 --exclude=/home/jary_p/documents/*
