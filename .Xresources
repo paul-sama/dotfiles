@@ -1,28 +1,28 @@
 !look and feel
-xterm*termName:	xterm-256color
-xterm*geometry: 80x36
-xterm*saveLines: 65535
+xterm*termName:	     xterm-256color
+xterm*geometry:      80x36
+xterm*saveLines:     65535
 xterm*dynamicColors: on
 xterm*highlightSelection: true
-xterm*scrollBar:      false
-xterm*rightScrollBar: true
-xterm*loginshell:     true
-xterm*cursorBlink:    true
+xterm*scrollBar:          false
+xterm*rightScrollBar:     true
+xterm*loginshell:         true
+xterm*cursorBlink:        true
 
 !font and locale
 xterm*locale:    true
 xterm*utf8:      true
 xterm*utf8Title: true
 xterm*fontMenu*fontdefault*Label: Default
-xterm*faceName: Monaco:antialias=True:pixelsize=18
-xterm*faceNameDoublesize: wenquanyi bitmap song:pixelsize=19:antialias=True
+xterm*faceName: Monaco:antialias=True: pixelsize=18
+xterm*faceNameDoublesize: wenquanyi bitmap song:pixelsize=19: antialias=True
 
-xterm*xftAntialias: true
-xterm*cjkWidth: false      
-xterm*eightBitInput: false
-xterm*metaSendsEscape: true
-xterm*altSendsEscape: true
-xterm*backarrowKey: false 
+xterm*xftAntialias:     true
+xterm*cjkWidth:         false      
+xterm*eightBitInput:    false
+xterm*metaSendsEscape:  true
+xterm*altSendsEscape:   true
+xterm*backarrowKey:     false 
 
 xterm*ttyModes: erase ^?
 xterm*VT100*translations:       #override \
@@ -30,7 +30,6 @@ xterm*VT100*translations:       #override \
 xterm*backarrowKeyIsErase:      true
 
 ! Molokai theme
-!*xterm*background:  #101010
 *xterm*background:  #000000
 *xterm*foreground:  #d0d0d0
 *xterm*cursorColor: #d0d0d0
@@ -50,64 +49,3 @@ xterm*backarrowKeyIsErase:      true
 *xterm*color13: #bb88dd
 *xterm*color14: #4eb4fa
 *xterm*color15: #d0d0d0
-
-
-Xcursor.theme: Vanilla-DMZ-AA
-URxvt.urgentOnBell: true
-URxvt.depth:      32
-
-!---------true transpaerency
-URxvt.background: rgba:0000/0000/0000/d000
-!---------pseudo transparency
-!URxvt.transparent: true 
-!URxvt.shading: 20
-! scrollbar style - rxvt (default), plain, next, or xterm
-URxvt*scrollstyle:plain
-
-URxvt.perl-ext-common:  default,url-select
-URxvt.keysym.M-u:       perl:url-select:select_next
-URxvt.urlLauncher:      luakit -U
-! URxvt.matcher.button:   1
-URxvt.underlineURLs:    true
-
-URxvt*foreground: rgb:e0/e0/e0
-!URxvt*background: rgb:20/20/20
-URxvt*saveLines:1200
-URxvt*scrollBar:false
-!URxvt*font: xft:Inconsolata:size=11:antialias=true:hinting=true        
-Xft.dpi:96
-URxvt.font:xft:文泉驿等宽正黑:size=13:style=Regular:antialias=true,xft:文泉驿等宽正黑:size=12:style=Regular:antialias=true
-URxvt.boldfont:xft:文泉驿等宽正黑:size=13:style=BOld:antialias=true,xft:文泉驿等宽正黑:size=12:style=Bold:antialias=true
-URxvt*skipBuiltinGlyphs: True
-
-!term colors
-! Black
-URxvt*color0:           #000000
-URxvt*color8:           #222222
-
-! Red
-URxvt*color1:           #C12121
-URxvt*color9:           #E50E0E
-
-! Green
-URxvt*color2:           #597b20
-URxvt*color10:          #89b83f
-
-! Yellow
-URxvt*color3:           #Ded838
-URxvt*color11:          #efef60
-
-! Blue
-URxvt*color4:           #265997
-URxvt*color12:          #3F6FD0
-
-! Magenta
-URxvt*color5:           #706c9a
-URxvt*color13:          #826ab1
-! Cyan
-URxvt*color6:           #69a2b0
-URxvt*color14:          #a1cdcd
-
-! White
-URxvt*color7:           #BBBBBB
-URxvt*color15:          #EEEEEF
