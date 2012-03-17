@@ -24,15 +24,15 @@ set mailcap_path = ~/.mutt/mailcap
 set header_cache = ~/.mutt/cache/
 set message_cachedir = ~/.mutt/cache/
 
-set sendmail = "/usr/bin/msmtp"
 set editor = 'vim + -c "set textwidth=72" -c "set wrap"'
 
-# Set from header field
+set sendmail = "/usr/bin/msmtp"
 set use_from = yes
 set reverse_name = yes
 set realname = "Auston Jary"
 set reverse_realname = no
 set from = 'Auston Jary <anyeccc@gmail.com>'
+set envelope_from = yes     #使用msmtp的-f参数
 
 # headers to show
 folder-hook . "ignore *; unignore From Cc Bcc Reply-To Date Subject user-agent"
@@ -47,7 +47,7 @@ set record = "~/.mail/sent"
 
 mailboxes =inbox
 mailboxes =arch
-mailboxes =zhlist
+mailboxes =zh-list
 
 set check_new = yes
 save-hook .* =keep                  #默认保存的邮件箱为keep
@@ -78,7 +78,7 @@ bind attach <space> view-attach
 macro index,pager gi "<change-folder>=inbox<enter>"     "Go to inbox"
 macro index,pager gs "<change-folder>=sent<enter>"      "Go to sent"
 macro index,pager ga "<change-folder>=arch<enter>"      "Go to arch"
-macro index,pager gz "<change-folder>=zhlist<enter>"    "Go to zhlish"
+macro index,pager gz "<change-folder>=zh-list<enter>"    "Go to zhlish"
 macro index,pager \cb <pipe-entry>'urlview'<enter>      "Follow links with urlview"
 
 macro index,pager E   "!vim ~/.muttrc<enter>" "edit ~/.muttrc"

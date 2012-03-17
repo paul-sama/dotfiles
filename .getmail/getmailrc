@@ -3,7 +3,7 @@ type = SimplePOP3SSLRetriever
 server = pop.gmail.com
 port = 995
 username = mail@gmail.com
-password = passwd
+password = psw
 
 [destination]
 type = MDA_external

@@ -1,6 +1,7 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin
 SHELL=/bin/bash
 MAILDIR=$HOME/.mail
+DEFAULT=$HOME/.mail/inbox
 LOGFILE=$MAILDIR/.procmaillog
 
 :0
@@ -8,12 +9,8 @@ LOGFILE=$MAILDIR/.procmaillog
 arch/
 
 :0
-* ^Sender: ubuntu-zh*
+* ^Sender: ubuntu-zh*|archlinux-cn*
 zh-list/
 
 :0
-* ^Sender: archlinux-cn*
-zh-list/
-
-:0
-inbox/
+$DEFAULT/

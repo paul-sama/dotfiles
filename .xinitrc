@@ -13,6 +13,7 @@ export SDL_AUDIODRIVER="alsa"
 
 fcitx &
 transmission-gtk &
+udiskie &
 
 DEFAULT_SESSION=awesome
 case $1 in
