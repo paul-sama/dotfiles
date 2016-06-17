@@ -1,7 +1,16 @@
 set nocompatible    "不要使用vi的键盘模式，而是vim自己的(命令模式下TAB补全)
 filetype plugin on  "载入文件类型插件
-filetype on         "侦测文件类型
+filetype off         "侦测文件类型
 syntax on           "enable colors
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+
+call vundle#end()
+filetype plugin indent on
 
 "display settings
 """""""""""""""""""""""""""""""""""""""""
@@ -115,20 +124,3 @@ endfunc
 """""""""""""""""""""""""""""""""""""""""
 "NERDTree""""""
 map     <F4>    :NERDTree<CR>
-
-"Vimwiki"""""""
-nmap <F7>    :w<CR>:Vimwiki2HTML<CR>
-imap <F7>    <Esc>:w<CR>:Vimwiki2HTML<CR>
-"map <F8>    :VimwikiAll2HTML<CR>
-
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'auto_export': 1}]
-let g:vimwiki_camel_case = 0
-let g:vimwiki_list = [{'path': '~/vimwiki/',
-		\ 'path_html': '~/vimwiki/html/',
-		\ 'html_header': '~/vimwiki/html/header.tpl',
-		\ 'html_footer': '~/vimwiki/html/footer.tpl'},
-		\ {'path': '~/wiki/',
-		\ 'path_html': '~/wiki/html/',
-		\ 'html_header': '~/wiki/html/header.tpl',
-		\ 'html_footer': '~/wiki/html/footer.tpl'}
-		\ ]

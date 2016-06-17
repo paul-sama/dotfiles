@@ -1,0 +1,12 @@
+[user]
+	name = Paul
+	email = 
+[alias]
+	co = checkout
+	ci = commit
+	st = status --short --branch
+	br = branch
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %C(green)%ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    ld = log --pretty=format:"%C(yellow)%h\\ %C(green)%ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short --graph
+    ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+    mm = merge --no-ff
